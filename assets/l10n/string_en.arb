@@ -1,0 +1,13 @@
+{
+    "ok": "OK",
+    "pageNotFound": "Page Not Found",
+    "canNotFindAPageFor": "Can't find a page for: {url}",
+    "@canNotFindAPageFor": {
+        "description": "not found page message for {url}",
+        "placeholders": {
+            "url": {
+                "type": "String"
+            }
+        }
+    }
+}
