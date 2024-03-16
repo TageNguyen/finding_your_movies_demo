@@ -108,6 +108,24 @@ abstract class Translations {
   /// In en, this message translates to:
   /// **'Can\'t find a page for: {url}'**
   String canNotFindAPageFor(String url);
+
+  /// No description provided for @anErrorHasOccurredPleaseTryAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'An error has occurred please try again'**
+  String get anErrorHasOccurredPleaseTryAgain;
+
+  /// No description provided for @listIsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'List is empty'**
+  String get listIsEmpty;
+
+  /// No description provided for @details.
+  ///
+  /// In en, this message translates to:
+  /// **'Details'**
+  String get details;
 }
 
 class _TranslationsDelegate extends LocalizationsDelegate<Translations> {
