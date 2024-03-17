@@ -17,7 +17,7 @@ class MovieItem extends StatelessWidget {
       borderRadius: BorderRadius.circular(8.0),
       child: InkWell(
         onTap: () {
-          context.goNamed(MovieDetailsScreen.routeName, extra: movie);
+          context.pushNamed(MovieDetailsScreen.routeName, extra: movie);
         },
         borderRadius: BorderRadius.circular(8.0),
         child: Container(

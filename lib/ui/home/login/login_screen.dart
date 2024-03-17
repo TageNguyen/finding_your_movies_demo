@@ -110,7 +110,7 @@ class __LoginPageState extends State<_LoginPage> {
       await bloC.loginWithGoogle();
       await userProvider.getUserInformations();
       // ignore: use_build_context_synchronously
-      context.goNamed(HomeScreen.routeName);
+      context.pushReplacementNamed(HomeScreen.routeName);
     } on AppException catch (error) {
       MessageHelper.showToastMessage(error.message, isErrorMessage: true);
       rethrow;
@@ -118,7 +118,6 @@ class __LoginPageState extends State<_LoginPage> {
       // ignore: use_build_context_synchronously
       MessageHelper.showToastMessage(Translations.of(context).loginFailed,
           isErrorMessage: true);
-      print('error: $error');
       rethrow;
     } finally {
       // ignore: use_build_context_synchronously

@@ -34,10 +34,10 @@ class RouterConfiguration {
                 fadeTransitionPage(const LoginScreen(), state),
           ),
           GoRoute(
-            path: UserProfileScrenn.routeName,
-            name: UserProfileScrenn.routeName,
+            path: UserProfileScreen.routeName,
+            name: UserProfileScreen.routeName,
             pageBuilder: (BuildContext context, GoRouterState state) =>
-                fadeTransitionPage(const UserProfileScrenn(), state),
+                fadeTransitionPage(const UserProfileScreen(), state),
             routes: [
               GoRoute(
                 path: SavedMoviesScreen.routeName,

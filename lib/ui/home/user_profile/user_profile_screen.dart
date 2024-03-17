@@ -11,9 +11,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-class UserProfileScrenn extends StatelessWidget {
+class UserProfileScreen extends StatelessWidget {
   static const String routeName = 'user-profile';
-  const UserProfileScrenn({super.key});
+  const UserProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -176,7 +176,7 @@ class UserProfileScrenn extends StatelessWidget {
       actionText: Translations.of(context).logOut,
     ).then((accept) {
       if (accept) {
-        context.goNamed(HomeScreen.routeName);
+        context.pushReplacementNamed(HomeScreen.routeName);
         context.read<UserProvider>().logOut();
       }
     });

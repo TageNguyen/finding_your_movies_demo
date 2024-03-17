@@ -2,7 +2,6 @@ import 'package:finding_your_movies_demo/l10n/translations.dart';
 import 'package:finding_your_movies_demo/models/movie/movie.dart';
 import 'package:finding_your_movies_demo/models/user/user.dart';
 import 'package:finding_your_movies_demo/providers/user_provider.dart';
-import 'package:finding_your_movies_demo/repositories/movie_repository_implement.dart';
 import 'package:finding_your_movies_demo/resource/app_colors.dart';
 import 'package:finding_your_movies_demo/resource/app_image_paths.dart';
 import 'package:finding_your_movies_demo/resource/repositories/movie_repository.dart';
@@ -10,8 +9,6 @@ import 'package:finding_your_movies_demo/resource/widgets/app_fade_in_image.dart
 import 'package:finding_your_movies_demo/resource/widgets/error_message.dart';
 import 'package:finding_your_movies_demo/resource/widgets/list_empty_message.dart';
 import 'package:finding_your_movies_demo/resource/widgets/placeholder.dart';
-import 'package:finding_your_movies_demo/services/api/movie/movie_api.dart';
-import 'package:finding_your_movies_demo/services/api/movie/movie_api_implement.dart';
 import 'package:finding_your_movies_demo/ui/home/home_bloc.dart';
 import 'package:finding_your_movies_demo/ui/home/login/login_screen.dart';
 import 'package:finding_your_movies_demo/ui/home/movie_details/movie_details_screen.dart';
@@ -29,16 +26,10 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        Provider<MovieApi>(
-          create: (context) => MovieApiImplement(),
-        ),
-        ProxyProvider<MovieApi, MovieRepository>(
-          update: (context, movieApi, previous) =>
-              previous ?? MovieRepositoryImplement(movieApi: movieApi),
-        ),
         ProxyProvider<MovieRepository, HomeBloC>(
           update: (context, movieRepository, previous) =>
               previous ?? HomeBloC(movieRepository: movieRepository),
+          dispose: (context, bloC) => bloC.dispose(),
         ),
       ],
       child: const _HomePage(),
@@ -79,7 +70,7 @@ class __HomePageState extends State<_HomePage> {
           if (snapshot.hasError) {
             return ErrorMessage(
               message: snapshot.error.toString(),
-              onLoadmore: homeBloC.getMovieList,
+              onRefresh: homeBloC.getMovieList,
             );
           }
 
@@ -87,7 +78,7 @@ class __HomePageState extends State<_HomePage> {
 
           if (moviesList.isEmpty) {
             return ListEmptyMessage(
-              onLoadmore: homeBloC.getMovieList,
+              onRefresh: homeBloC.getMovieList,
             );
           }
 
@@ -117,7 +108,7 @@ class __HomePageState extends State<_HomePage> {
           return InkWell(
             onTap: () {
               if (userData != null) {
-                context.goNamed(UserProfileScrenn.routeName);
+                context.goNamed(UserProfileScreen.routeName);
               } else {
                 context.goNamed(LoginScreen.routeName);
               }
@@ -173,6 +164,7 @@ class __HomePageState extends State<_HomePage> {
 
     return SliverAppBar(
       expandedHeight: MediaQuery.of(context).size.height * 0.6,
+      automaticallyImplyLeading: false,
       flexibleSpace: FlexibleSpaceBar(
         background: Stack(
           children: [
