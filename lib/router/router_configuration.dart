@@ -1,4 +1,9 @@
+import 'package:finding_your_movies_demo/models/movie/movie.dart';
 import 'package:finding_your_movies_demo/ui/home/home_screen.dart';
+import 'package:finding_your_movies_demo/ui/home/login/login_screen.dart';
+import 'package:finding_your_movies_demo/ui/home/movie_details/movie_details_screen.dart';
+import 'package:finding_your_movies_demo/ui/home/user_profile/saved_movies/saved_movies_screen.dart';
+import 'package:finding_your_movies_demo/ui/home/user_profile/user_profile_screen.dart';
 import 'package:finding_your_movies_demo/ui/not_found_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -11,8 +16,38 @@ class RouterConfiguration {
     routes: <RouteBase>[
       GoRoute(
         path: HomeScreen.routeName,
+        name: HomeScreen.routeName,
         pageBuilder: (BuildContext context, GoRouterState state) =>
             fadeTransitionPage(const HomeScreen(), state),
+        routes: <RouteBase>[
+          GoRoute(
+              path: MovieDetailsScreen.routeName,
+              name: MovieDetailsScreen.routeName,
+              pageBuilder: (BuildContext context, GoRouterState state) {
+                final movie = state.extra as Movie;
+                return fadeTransitionPage(MovieDetailsScreen(movie: movie), state);
+              }),
+          GoRoute(
+            path: LoginScreen.routeName,
+            name: LoginScreen.routeName,
+            pageBuilder: (BuildContext context, GoRouterState state) =>
+                fadeTransitionPage(const LoginScreen(), state),
+          ),
+          GoRoute(
+            path: UserProfileScreen.routeName,
+            name: UserProfileScreen.routeName,
+            pageBuilder: (BuildContext context, GoRouterState state) =>
+                fadeTransitionPage(const UserProfileScreen(), state),
+            routes: [
+              GoRoute(
+                path: SavedMoviesScreen.routeName,
+                name: SavedMoviesScreen.routeName,
+                pageBuilder: (BuildContext context, GoRouterState state) =>
+                    fadeTransitionPage(const SavedMoviesScreen(), state),
+              ),
+            ],
+          ),
+        ],
       ),
     ],
   );

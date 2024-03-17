@@ -1,16 +1,21 @@
 import 'package:finding_your_movies_demo/di.dart';
 import 'package:finding_your_movies_demo/enums/app_language.dart';
+import 'package:finding_your_movies_demo/firebase_options.dart';
 import 'package:finding_your_movies_demo/l10n/translations.dart';
 import 'package:finding_your_movies_demo/providers/app_provider.dart';
 import 'package:finding_your_movies_demo/resource/app_theme.dart';
 import 'package:finding_your_movies_demo/resource/widgets/loading_indicator.dart';
 import 'package:finding_your_movies_demo/router/router_configuration.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MultiProvider(
     providers: DI.getGlobalProviders(),
     child: const MyApp(),
