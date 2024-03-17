@@ -1,3 +1,4 @@
+import 'package:finding_your_movies_demo/l10n/translations.dart';
 import 'package:finding_your_movies_demo/models/movie/movie.dart';
 import 'package:finding_your_movies_demo/resource/app_colors.dart';
 import 'package:finding_your_movies_demo/resource/extensions/double_ex.dart';
@@ -78,7 +79,7 @@ class MovieItem extends StatelessWidget {
                           const SizedBox(width: 6.0),
                           Expanded(
                             child: Text(
-                              '${movie.duration.inMinutes} minutes',
+                              '${movie.duration.inMinutes} ${Translations.of(context).minutes}',
                               style: const TextStyle(
                                 fontWeight: FontWeight.w400,
                                 fontSize: 10.0,
