@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "868152119243",
+    "project_id": "finding-your-movie-demo",
+    "storage_bucket": "finding-your-movie-demo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:868152119243:android:8069c76fcf7dfa7ca8704e",
+        "android_client_info": {
+          "package_name": "com.example.finding_your_movies_demo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWbKpcH5v60U0mZoV87GRqEGevIGtgj3Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
