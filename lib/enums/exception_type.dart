@@ -4,5 +4,6 @@ enum ExceptionType {
   badRequest,
   serverError,
   timeOut,
+  canceledByUser,
   unknown,
 }

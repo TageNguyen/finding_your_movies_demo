@@ -1,6 +1,8 @@
 import 'package:finding_your_movies_demo/models/movie/movie.dart';
 import 'package:finding_your_movies_demo/ui/home/home_screen.dart';
+import 'package:finding_your_movies_demo/ui/home/login/login_screen.dart';
 import 'package:finding_your_movies_demo/ui/home/movie_details/movie_details_screen.dart';
+import 'package:finding_your_movies_demo/ui/home/user_profile/user_profile_screen.dart';
 import 'package:finding_your_movies_demo/ui/not_found_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -24,6 +26,18 @@ class RouterConfiguration {
                 final movie = state.extra as Movie;
                 return fadeTransitionPage(MovieDetailsScreen(movie: movie), state);
               }),
+          GoRoute(
+            path: LoginScreen.routeName,
+            name: LoginScreen.routeName,
+            pageBuilder: (BuildContext context, GoRouterState state) =>
+                fadeTransitionPage(const LoginScreen(), state),
+          ),
+          GoRoute(
+            path: UserProfileScrenn.routeName,
+            name: UserProfileScrenn.routeName,
+            pageBuilder: (BuildContext context, GoRouterState state) =>
+                fadeTransitionPage(const UserProfileScrenn(), state),
+          ),
         ],
       ),
     ],

@@ -5,6 +5,9 @@ class TranslationsEn extends Translations {
   TranslationsEn([String locale = 'en']) : super(locale);
 
   @override
+  String get appName => 'Finding your movies';
+
+  @override
   String get ok => 'OK';
 
   @override
@@ -44,4 +47,16 @@ class TranslationsEn extends Translations {
 
   @override
   String get duration => 'Duration';
+
+  @override
+  String get loginWithGoogle => 'Login with Google';
+
+  @override
+  String get letsFindYourBestMovie => 'Let\'s find your best movie';
+
+  @override
+  String get login => 'Login';
+
+  @override
+  String get loginFailed => 'Login failed';
 }

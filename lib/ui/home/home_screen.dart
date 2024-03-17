@@ -1,7 +1,10 @@
 import 'package:finding_your_movies_demo/l10n/translations.dart';
 import 'package:finding_your_movies_demo/models/movie/movie.dart';
+import 'package:finding_your_movies_demo/models/user/user.dart';
+import 'package:finding_your_movies_demo/providers/user_provider.dart';
 import 'package:finding_your_movies_demo/repositories/movie_repository_implement.dart';
 import 'package:finding_your_movies_demo/resource/app_colors.dart';
+import 'package:finding_your_movies_demo/resource/app_image_paths.dart';
 import 'package:finding_your_movies_demo/resource/repositories/movie_repository.dart';
 import 'package:finding_your_movies_demo/resource/widgets/app_fade_in_image.dart';
 import 'package:finding_your_movies_demo/resource/widgets/error_message.dart';
@@ -10,7 +13,9 @@ import 'package:finding_your_movies_demo/resource/widgets/placeholder.dart';
 import 'package:finding_your_movies_demo/services/api/movie/movie_api.dart';
 import 'package:finding_your_movies_demo/services/api/movie/movie_api_implement.dart';
 import 'package:finding_your_movies_demo/ui/home/home_bloc.dart';
+import 'package:finding_your_movies_demo/ui/home/login/login_screen.dart';
 import 'package:finding_your_movies_demo/ui/home/movie_details/movie_details_screen.dart';
+import 'package:finding_your_movies_demo/ui/home/user_profile/user_profile_screen.dart';
 import 'package:finding_your_movies_demo/ui/home/widgets/movie_item.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -50,10 +55,13 @@ class _HomePage extends StatefulWidget {
 
 class __HomePageState extends State<_HomePage> {
   late final HomeBloC homeBloC;
+  late final UserProvider userProvider;
 
   @override
   void initState() {
     homeBloC = context.read<HomeBloC>();
+    userProvider = context.read<UserProvider>();
+    userProvider.getUserInformations();
     homeBloC.getMovieList();
     super.initState();
   }
@@ -95,6 +103,47 @@ class __HomePageState extends State<_HomePage> {
   }
 
   Widget _buildMostPopularMoviePoster(BuildContext context, Movie movie) {
+    final userAvatar = Align(
+      alignment: Alignment.topLeft,
+      child: StreamBuilder<User?>(
+        stream: userProvider.currentUserStream,
+        builder: (_, snapshot) {
+          final userData = snapshot.data;
+          ImageProvider avatar = const AssetImage(AppImagePaths.profilePlaceholder);
+          if (userData?.avatarUrl != null) {
+            avatar = NetworkImage(userData!.avatarUrl);
+          }
+
+          return InkWell(
+            onTap: () {
+              if (userData != null) {
+                context.goNamed(UserProfileScrenn.routeName);
+              } else {
+                context.goNamed(LoginScreen.routeName);
+              }
+            },
+            borderRadius: BorderRadius.circular(100.0),
+            child: Container(
+              height: 36.0,
+              width: 36.0,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: AppColors.grey[350],
+                border: Border.all(
+                  color: AppColors.white,
+                  width: 1.5,
+                ),
+                image: DecorationImage(
+                  image: avatar,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+
     final viewDetailsButton = Material(
       color: AppColors.transparent,
       borderRadius: BorderRadius.circular(36.0),
@@ -133,7 +182,7 @@ class __HomePageState extends State<_HomePage> {
             Positioned.fill(
               child: Container(
                 alignment: Alignment.bottomCenter,
-                padding: const EdgeInsets.all(12.0),
+                padding: const EdgeInsets.fromLTRB(12.0, 40.0, 12.0, 12.0),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.bottomCenter,
@@ -146,7 +195,13 @@ class __HomePageState extends State<_HomePage> {
                     stops: const [0.0, 0.4, 1.0],
                   ),
                 ),
-                child: viewDetailsButton,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    userAvatar,
+                    viewDetailsButton,
+                  ],
+                ),
               ),
             ),
           ],

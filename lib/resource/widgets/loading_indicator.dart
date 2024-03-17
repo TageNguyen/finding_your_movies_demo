@@ -26,7 +26,7 @@ class LoadingIndicator extends StatelessWidget {
               child: Transform.scale(
                 scale: 0.8,
                 child: const CircularProgressIndicator(
-                  strokeWidth: 2.0,
+                  strokeWidth: 4.0,
                   color: AppColors.white,
                 ),
               ),
