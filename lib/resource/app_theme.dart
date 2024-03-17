@@ -25,7 +25,7 @@ class AppTheme {
         ),
         bodySmall: TextStyle(
           fontWeight: FontWeight.w400,
-          fontSize: 14.0,
+          fontSize: 12.0,
           height: 1.2,
         ),
         titleLarge: TextStyle(

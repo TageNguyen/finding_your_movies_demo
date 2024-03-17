@@ -23,4 +23,25 @@ class TranslationsEn extends Translations {
 
   @override
   String get details => 'Details';
+
+  @override
+  String get minutes => 'Minutes';
+
+  @override
+  String get releaseDate => 'Release date';
+
+  @override
+  String get rating => 'Rating';
+
+  @override
+  String get storyline => 'Storyline';
+
+  @override
+  String get genres => 'Genres';
+
+  @override
+  String get actors => 'Actors';
+
+  @override
+  String get duration => 'Duration';
 }

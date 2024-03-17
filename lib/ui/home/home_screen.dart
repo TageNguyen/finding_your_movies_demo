@@ -3,14 +3,17 @@ import 'package:finding_your_movies_demo/models/movie/movie.dart';
 import 'package:finding_your_movies_demo/repositories/movie_repository_implement.dart';
 import 'package:finding_your_movies_demo/resource/app_colors.dart';
 import 'package:finding_your_movies_demo/resource/repositories/movie_repository.dart';
+import 'package:finding_your_movies_demo/resource/widgets/app_fade_in_image.dart';
 import 'package:finding_your_movies_demo/resource/widgets/error_message.dart';
 import 'package:finding_your_movies_demo/resource/widgets/list_empty_message.dart';
 import 'package:finding_your_movies_demo/resource/widgets/placeholder.dart';
 import 'package:finding_your_movies_demo/services/api/movie/movie_api.dart';
 import 'package:finding_your_movies_demo/services/api/movie/movie_api_implement.dart';
 import 'package:finding_your_movies_demo/ui/home/home_bloc.dart';
+import 'package:finding_your_movies_demo/ui/home/movie_details/movie_details_screen.dart';
 import 'package:finding_your_movies_demo/ui/home/widgets/movie_item.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -96,7 +99,9 @@ class __HomePageState extends State<_HomePage> {
       color: AppColors.transparent,
       borderRadius: BorderRadius.circular(36.0),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          context.goNamed(MovieDetailsScreen.routeName, extra: movie);
+        },
         borderRadius: BorderRadius.circular(36.0),
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 6.0),
@@ -123,10 +128,7 @@ class __HomePageState extends State<_HomePage> {
         background: Stack(
           children: [
             Positioned.fill(
-              child: Image.network(
-                movie.posterurl,
-                fit: BoxFit.cover,
-              ),
+              child: AppFadeInImage(imageUrl: movie.posterurl),
             ),
             Positioned.fill(
               child: Container(

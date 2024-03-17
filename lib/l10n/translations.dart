@@ -126,6 +126,48 @@ abstract class Translations {
   /// In en, this message translates to:
   /// **'Details'**
   String get details;
+
+  /// No description provided for @minutes.
+  ///
+  /// In en, this message translates to:
+  /// **'Minutes'**
+  String get minutes;
+
+  /// No description provided for @releaseDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Release date'**
+  String get releaseDate;
+
+  /// No description provided for @rating.
+  ///
+  /// In en, this message translates to:
+  /// **'Rating'**
+  String get rating;
+
+  /// No description provided for @storyline.
+  ///
+  /// In en, this message translates to:
+  /// **'Storyline'**
+  String get storyline;
+
+  /// No description provided for @genres.
+  ///
+  /// In en, this message translates to:
+  /// **'Genres'**
+  String get genres;
+
+  /// No description provided for @actors.
+  ///
+  /// In en, this message translates to:
+  /// **'Actors'**
+  String get actors;
+
+  /// No description provided for @duration.
+  ///
+  /// In en, this message translates to:
+  /// **'Duration'**
+  String get duration;
 }
 
 class _TranslationsDelegate extends LocalizationsDelegate<Translations> {

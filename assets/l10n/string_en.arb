@@ -12,5 +12,12 @@
     },
     "anErrorHasOccurredPleaseTryAgain": "An error has occurred please try again",
     "listIsEmpty": "List is empty",
-    "details": "Details"
+    "details": "Details",
+    "minutes": "Minutes",
+    "releaseDate": "Release date",
+    "rating": "Rating",
+    "storyline": "Storyline",
+    "genres": "Genres",
+    "actors": "Actors",
+    "duration": "Duration"
 }
