@@ -34,6 +34,9 @@ class Movie {
 
   final List<String> actors;
 
+  @JsonKey(includeFromJson: false)
+  bool isSaved = false;
+
   @JsonKey(fromJson: DoubleEX.parseFromDynamic)
   final double imdbRating;
 

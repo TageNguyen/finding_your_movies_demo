@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 
 class ListEmptyMessage extends StatelessWidget {
   final String? message;
-  final Future<void> Function()? onLoadmore;
-  const ListEmptyMessage({super.key, this.message, this.onLoadmore});
+  final Future<void> Function()? onRefresh;
+  const ListEmptyMessage({super.key, this.message, this.onRefresh});
 
   @override
   Widget build(BuildContext context) {
     return RefreshAndLoadmoreWidget(
-      onLoadmore: onLoadmore,
+      onRefresh: onRefresh,
       child: ListView(
         padding: EdgeInsets.fromLTRB(
             16.0, MediaQuery.of(context).size.height * 0.45, 16.0, 24.0),
