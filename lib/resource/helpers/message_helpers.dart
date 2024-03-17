@@ -67,4 +67,70 @@ class MessageHelper {
       ),
     );
   }
+
+  /// show a confirming dialog
+  /// dialog will has cupertino style if [Platform.isIOS] else material style
+  /// return a bool value
+  static Future<bool> showConfirmDialog(
+    BuildContext context, {
+    String? title,
+    String? message,
+    String? actionText,
+    double actionTextSize = 16,
+  }) {
+    if (Platform.isIOS) {
+      return showCupertinoDialog<bool>(
+        context: context,
+        builder: (context) => CupertinoAlertDialog(
+          title: title != null ? Text(title) : null,
+          content: Text('$message'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(false);
+              },
+              child: Text(Translations.of(context).cancel),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(true);
+              },
+              child: Text(actionText ?? Translations.of(context).ok),
+            ),
+          ],
+        ),
+      ).then((value) => value ?? false);
+    }
+    return showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: title != null
+            ? Text(title,
+                style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold))
+            : null,
+        content: Text('$message',
+            style: const TextStyle(fontSize: 15, fontWeight: FontWeight.normal)),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop(false);
+            },
+            child: Text(
+              Translations.of(context).cancel,
+              style: TextStyle(fontSize: actionTextSize),
+            ),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop(true);
+            },
+            child: Text(
+              actionText ?? Translations.of(context).ok,
+              style: TextStyle(fontSize: actionTextSize),
+            ),
+          ),
+        ],
+      ),
+    ).then((value) => value ?? false);
+  }
 }

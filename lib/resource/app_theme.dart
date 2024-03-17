@@ -74,6 +74,13 @@ class AppTheme {
       ),
       floatingActionButtonTheme: floatingActionButtonThemeData,
       listTileTheme: listTileThemeData,
+      dividerTheme: const DividerThemeData(
+        color: AppColors.grey,
+        thickness: 0.75,
+        endIndent: 12.0,
+        indent: 12.0,
+        space: 18.0,
+      ),
     );
   }
 
@@ -150,7 +157,7 @@ class AppTheme {
 
   /// IconThemeData
   static IconThemeData iconTheme = const IconThemeData(
-    size: 24.0,
+    size: 20.0,
   );
 
   static FloatingActionButtonThemeData floatingActionButtonThemeData =

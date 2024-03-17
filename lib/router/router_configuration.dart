@@ -2,6 +2,7 @@ import 'package:finding_your_movies_demo/models/movie/movie.dart';
 import 'package:finding_your_movies_demo/ui/home/home_screen.dart';
 import 'package:finding_your_movies_demo/ui/home/login/login_screen.dart';
 import 'package:finding_your_movies_demo/ui/home/movie_details/movie_details_screen.dart';
+import 'package:finding_your_movies_demo/ui/home/user_profile/saved_movies/saved_movies_screen.dart';
 import 'package:finding_your_movies_demo/ui/home/user_profile/user_profile_screen.dart';
 import 'package:finding_your_movies_demo/ui/not_found_screen.dart';
 import 'package:flutter/material.dart';
@@ -37,6 +38,14 @@ class RouterConfiguration {
             name: UserProfileScrenn.routeName,
             pageBuilder: (BuildContext context, GoRouterState state) =>
                 fadeTransitionPage(const UserProfileScrenn(), state),
+            routes: [
+              GoRoute(
+                path: SavedMoviesScreen.routeName,
+                name: SavedMoviesScreen.routeName,
+                pageBuilder: (BuildContext context, GoRouterState state) =>
+                    fadeTransitionPage(const SavedMoviesScreen(), state),
+              ),
+            ],
           ),
         ],
       ),
