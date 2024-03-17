@@ -9,5 +9,8 @@
                 "type": "String"
             }
         }
-    }
+    },
+    "anErrorHasOccurredPleaseTryAgain": "An error has occurred please try again",
+    "listIsEmpty": "List is empty",
+    "details": "Details"
 }

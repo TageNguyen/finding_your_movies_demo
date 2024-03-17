@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class BaseApi {
-  final String _baseUrl = 'https://raw.githubusercontent.com';
+  final String _baseUrl = 'raw.githubusercontent.com';
   final Duration _kTimeOutDuration = const Duration(minutes: 2);
   final Map<String, String> _baseHeaders = {'content-type': 'application/json'};
 
@@ -47,10 +47,13 @@ class BaseApi {
     Map<String, dynamic>? body,
   }) async {
     int statusCode = response.statusCode;
-    Map<String, dynamic> jsonBody = jsonDecode(utf8.decode(response.bodyBytes));
+    final jsonBody = jsonDecode(utf8.decode(response.bodyBytes));
 
     if (200 >= statusCode && statusCode <= 299) {
-      return jsonBody;
+      if (jsonBody.runtimeType != Map<String, dynamic>) {
+        return {'data': jsonBody};
+      }
+      return jsonBody as Map<String, dynamic>;
     }
     if (statusCode == 401) {
       throw AppException(ExceptionType.unauthorized, jsonBody['message']);

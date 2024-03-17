@@ -1,106 +1,87 @@
-import 'dart:math' as math;
-
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
-class ListContentPlaceHolder extends StatelessWidget {
-  final LeadingShape leadingShape;
-  final int itemCount;
-  final math.Random rd = math.Random();
-  ListContentPlaceHolder({
-    super.key,
-    this.leadingShape = LeadingShape.square,
-    this.itemCount = 3,
-  });
+class HomePagePlaceHolder extends StatelessWidget {
+  const HomePagePlaceHolder({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Shimmer.fromColors(
       baseColor: Colors.grey.shade300,
       highlightColor: Colors.grey.shade100,
       enabled: true,
-      child: ListView.separated(
-        itemCount: itemCount,
-        shrinkWrap: true,
-        separatorBuilder: (_, __) => const SizedBox(height: 10.0),
-        itemBuilder: (context, index) {
-          return _ContentPlaceholder(
-            lineType: ContentLineType.values[rd.nextInt(2)],
-            leadingShape: leadingShape,
-          );
-        },
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(
+              height: size.height * 0.6,
+              decoration: const BoxDecoration(color: Colors.white),
+            ),
+            _TitleSectionPlaceHolder(width: size.width * 0.2),
+            const _HorizontalListItemPlaceHolder(height: 160.0, itemCount: 5),
+            _TitleSectionPlaceHolder(width: size.width * 0.3),
+            const _HorizontalListItemPlaceHolder(height: 160.0, itemCount: 5),
+          ],
+        ),
       ),
     );
   }
 }
 
-enum ContentLineType {
-  twoLines,
-  threeLines,
-}
-
-enum LeadingShape {
-  square,
-  circle,
-  none,
-}
-
-class _ContentPlaceholder extends StatelessWidget {
-  final ContentLineType lineType;
-  final LeadingShape leadingShape;
-
-  const _ContentPlaceholder({
-    this.leadingShape = LeadingShape.square,
-    required this.lineType,
-  });
+class _TitleSectionPlaceHolder extends StatelessWidget {
+  final double width;
+  const _TitleSectionPlaceHolder({required this.width});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
       child: Row(
-        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          if (leadingShape == LeadingShape.square)
-            Container(
-              width: 96.0,
-              height: 72.0,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12.0),
-                color: Colors.white,
-              ),
-            )
-          else if (leadingShape == LeadingShape.circle)
-            const CircleAvatar(radius: 40.0),
-          const SizedBox(width: 12.0),
-          Expanded(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  width: double.infinity,
-                  height: 10.0,
-                  color: Colors.white,
-                  margin: const EdgeInsets.only(bottom: 8.0),
-                ),
-                if (lineType == ContentLineType.threeLines)
-                  Container(
-                    width: double.infinity,
-                    height: 10.0,
-                    color: Colors.white,
-                    margin: const EdgeInsets.only(bottom: 8.0),
-                  ),
-                Container(
-                  width: 100.0,
-                  height: 10.0,
-                  color: Colors.white,
-                )
-              ],
-            ),
-          )
+          Container(
+            height: 8,
+            width: width,
+            color: Colors.white,
+          ),
+          Container(
+            height: 8,
+            width: width * 0.75,
+            color: Colors.white,
+          ),
         ],
+      ),
+    );
+  }
+}
+
+class _HorizontalListItemPlaceHolder extends StatelessWidget {
+  final double height;
+  final int itemCount;
+  const _HorizontalListItemPlaceHolder({this.height = 160.0, this.itemCount = 5});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: height,
+      child: ListView.separated(
+        itemCount: itemCount,
+        scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        physics: const NeverScrollableScrollPhysics(),
+        separatorBuilder: (context, index) => const SizedBox(width: 10.0),
+        itemBuilder: (context, index) {
+          return Container(
+            width: MediaQuery.of(context).size.width * 0.33,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8.0),
+              color: Colors.white,
+            ),
+          );
+        },
       ),
     );
   }
