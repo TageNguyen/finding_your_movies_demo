@@ -1,4 +1,5 @@
 {
+    "@@locale": "en",
     "appName": "Finding your movies",
     "ok": "OK",
     "pageNotFound": "Page Not Found",
@@ -24,5 +25,13 @@
     "loginWithGoogle": "Login with Google",
     "letsFindYourBestMovie": "Let's find your best movie",
     "login": "Login",
-    "loginFailed": "Login failed"
+    "loginFailed": "Login failed",
+    "email": "Email",
+    "phoneNumber": "Phone Number",
+    "profile": "Profile",
+    "logout": "Logout",
+    "cancel": "Cancel",
+    "areYouSureYouWantToLogOut": "Are you sure you want to log out?",
+    "logOut": "Logout",
+    "savedMovies": "Saved Movies"
 }

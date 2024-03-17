@@ -59,4 +59,28 @@ class TranslationsEn extends Translations {
 
   @override
   String get loginFailed => 'Login failed';
+
+  @override
+  String get email => 'Email';
+
+  @override
+  String get phoneNumber => 'Phone Number';
+
+  @override
+  String get profile => 'Profile';
+
+  @override
+  String get logout => 'Logout';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get areYouSureYouWantToLogOut => 'Are you sure you want to log out?';
+
+  @override
+  String get logOut => 'Logout';
+
+  @override
+  String get savedMovies => 'Saved Movies';
 }

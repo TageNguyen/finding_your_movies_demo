@@ -198,6 +198,54 @@ abstract class Translations {
   /// In en, this message translates to:
   /// **'Login failed'**
   String get loginFailed;
+
+  /// No description provided for @email.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get email;
+
+  /// No description provided for @phoneNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone Number'**
+  String get phoneNumber;
+
+  /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profile;
+
+  /// No description provided for @logout.
+  ///
+  /// In en, this message translates to:
+  /// **'Logout'**
+  String get logout;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @areYouSureYouWantToLogOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to log out?'**
+  String get areYouSureYouWantToLogOut;
+
+  /// No description provided for @logOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Logout'**
+  String get logOut;
+
+  /// No description provided for @savedMovies.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved Movies'**
+  String get savedMovies;
 }
 
 class _TranslationsDelegate extends LocalizationsDelegate<Translations> {
