@@ -63,6 +63,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '868152119243',
     projectId: 'finding-your-movie-demo',
     storageBucket: 'finding-your-movie-demo.appspot.com',
+    iosClientId: '868152119243-59m98em6u14j4bijjnkokt0ll9e4il6u.apps.googleusercontent.com',
     iosBundleId: 'com.example.findingYourMoviesDemo',
   );
 }

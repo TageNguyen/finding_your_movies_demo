@@ -30,12 +30,12 @@ class AppTheme {
         ),
         titleLarge: TextStyle(
           fontWeight: FontWeight.w600,
-          fontSize: 24.0,
+          fontSize: 32.0,
           height: 1,
         ),
         titleMedium: TextStyle(
           fontWeight: FontWeight.w600,
-          fontSize: 20.0,
+          fontSize: 24.0,
           height: 1,
         ),
         titleSmall: TextStyle(
@@ -135,15 +135,15 @@ class AppTheme {
   static ButtonStyle elevatedButtonStyle = ElevatedButton.styleFrom(
     alignment: Alignment.center,
     elevation: 0.0,
-    padding: const EdgeInsets.fromLTRB(24.0, 14.0, 24.0, 14.0),
+    padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 8.0),
     shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(4.0),
+      borderRadius: BorderRadius.circular(36.0),
       side: BorderSide.none,
     ),
     textStyle: const TextStyle(
       fontFamily: 'dejavu',
       fontWeight: FontWeight.w400,
-      fontSize: 18.0,
+      fontSize: 14.0,
       height: 1.2,
     ),
   );

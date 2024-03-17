@@ -1,4 +1,5 @@
 {
+    "appName": "Finding your movies",
     "ok": "OK",
     "pageNotFound": "Page Not Found",
     "canNotFindAPageFor": "Can't find a page for: {url}",
@@ -19,5 +20,9 @@
     "storyline": "Storyline",
     "genres": "Genres",
     "actors": "Actors",
-    "duration": "Duration"
+    "duration": "Duration",
+    "loginWithGoogle": "Login with Google",
+    "letsFindYourBestMovie": "Let's find your best movie",
+    "login": "Login",
+    "loginFailed": "Login failed"
 }

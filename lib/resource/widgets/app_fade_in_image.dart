@@ -3,16 +3,19 @@ import 'package:flutter/material.dart';
 
 class AppFadeInImage extends StatelessWidget {
   final String imageUrl;
-  const AppFadeInImage({super.key, required this.imageUrl});
+  final String? placeholderPath;
+  const AppFadeInImage({super.key, required this.imageUrl, this.placeholderPath});
 
   @override
   Widget build(BuildContext context) {
     return FadeInImage(
+      key: key,
       placeholderFit: BoxFit.contain,
       image: NetworkImage(imageUrl),
-      placeholder: const AssetImage(AppImagePaths.imagePlaceholder),
+      placeholder: AssetImage(placeholderPath ?? AppImagePaths.imagePlaceholder),
       imageErrorBuilder: (context, error, stackTrace) {
-        return Image.asset(AppImagePaths.imagePlaceholder, fit: BoxFit.contain);
+        return Image.asset(placeholderPath ?? AppImagePaths.imagePlaceholder,
+            fit: BoxFit.contain);
       },
       fit: BoxFit.cover,
     );

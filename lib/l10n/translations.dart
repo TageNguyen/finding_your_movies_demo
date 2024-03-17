@@ -91,6 +91,12 @@ abstract class Translations {
     Locale('en')
   ];
 
+  /// No description provided for @appName.
+  ///
+  /// In en, this message translates to:
+  /// **'Finding your movies'**
+  String get appName;
+
   /// No description provided for @ok.
   ///
   /// In en, this message translates to:
@@ -168,6 +174,30 @@ abstract class Translations {
   /// In en, this message translates to:
   /// **'Duration'**
   String get duration;
+
+  /// No description provided for @loginWithGoogle.
+  ///
+  /// In en, this message translates to:
+  /// **'Login with Google'**
+  String get loginWithGoogle;
+
+  /// No description provided for @letsFindYourBestMovie.
+  ///
+  /// In en, this message translates to:
+  /// **'Let\'s find your best movie'**
+  String get letsFindYourBestMovie;
+
+  /// No description provided for @login.
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
+  String get login;
+
+  /// No description provided for @loginFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Login failed'**
+  String get loginFailed;
 }
 
 class _TranslationsDelegate extends LocalizationsDelegate<Translations> {
