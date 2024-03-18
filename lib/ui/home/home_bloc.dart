@@ -9,13 +9,12 @@ class HomeBloC extends BaseBloC {
   HomeBloC({required this.movieRepository});
 
   /// manage list movies state
-  final _moviesObject = BehaviorSubject<List<Movie>?>();
+  final _moviesObject = BehaviorSubject<List<Movie>>();
   Stream<List<Movie>?> get moviesStream => _moviesObject.stream;
 
   /// get movies list
   Future<void> getMovieList() async {
     try {
-      _moviesObject.add(null);
       final data = await movieRepository.getMovieList();
       _moviesObject.add(data);
     } catch (error) {
