@@ -2,15 +2,14 @@
 
 A new Flutter project.
 
-## Getting Started
+## using Flutter 3.19.2 • channel stable
+## Tools • Dart 3.3.0 • DevTools 2.31.1
 
-This project is a starting point for a Flutter application.
+## How to run
 
-A few resources to get you started if this is your first Flutter project:
+- Install dependencies: `flutter pub get`
+- Generate models with `flutter pub run build_runner build --delete-conflicting-outputs`.
+- Create l10n: `flutter gen-l10n`
+- Run project: `flutter run`
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## For apk file and demo video, please follow: [Link](https://drive.google.com/drive/folders/1kVY8kJlv4tkA25uDJiTd1HAclynrPCyl)
