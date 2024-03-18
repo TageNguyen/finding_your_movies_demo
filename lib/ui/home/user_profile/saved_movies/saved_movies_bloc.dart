@@ -9,13 +9,12 @@ class SavedMoviesBloC extends BaseBloC {
   SavedMoviesBloC({required this.movieRepository});
 
   /// manage list movies state
-  final _savedMoviesObject = BehaviorSubject<List<Movie>?>();
+  final _savedMoviesObject = BehaviorSubject<List<Movie>>();
   Stream<List<Movie>?> get savedMoviesStream => _savedMoviesObject.stream;
 
   /// get saved movies
   Future<void> getSavedMovies() async {
     try {
-      _savedMoviesObject.add(null);
       final data = await movieRepository.getSavedMovies();
       _savedMoviesObject.add(data);
     } catch (error) {
